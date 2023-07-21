@@ -97,8 +97,6 @@ let
   energy,psi = dmrg(H,psi0,sweeps; write_when_maxdim_exceeds=4000, write_step=file)
   mv(string(file,"_tmp.h5"),string(file,".h5");force=true)
 
-  include("send_email.jl")
-
   using Plots
   NN = expect(psi,"Ntot";sites = 1:Ny:N)
   open(string("Ne_",sys,".dat"), "w") do io
